@@ -6,6 +6,13 @@ This is the react frontend for IoT project in unit CITS5506.
 
 In the project directory, you can run:
 
+## Set NODE_ENV if in development
+For Window:  
+`set NODE_ENV=development`  
+For Linux  
+`export NODE_ENV=development`
+
+
 ### `npm start`
 
 Runs the app in the development mode.\

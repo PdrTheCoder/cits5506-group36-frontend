@@ -1,6 +1,8 @@
 import useFetch from "./useFetch";
-import { useState } from "react";
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
+import { config } from "./Constants";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Settings = () => {
   const [selectDevice, setDevice] = useState(null);
@@ -9,9 +11,7 @@ const Settings = () => {
     data: devices,
     isLoading,
     error,
-  } = useFetch(
-    "http://3.27.67.131:5009/devices"
-  );
+  } = useFetch(config.url.API_BASE + "devices");
 
   const handleChange = (e) => {
     const newDevice = devices.filter(
@@ -24,22 +24,21 @@ const Settings = () => {
     const cpDevice = { ...selectDevice };
     cpDevice[
       e.target.name === "thresholdVal" ? "threshold" : "empty_distance"
-    ] = e.target.val;
+    ] = e.target.value;
     setDevice(cpDevice);
   };
 
   const handleUpdate = (e) => {
-    fetch(
-      "http://3.27.67.131:5009/devices/" +
-        selectDevice.id,
-      {
-        method: "PATCH",
-        body: JSON.stringify({
-          threshold: selectDevice.threshold,
-          empty_distance: selectDevice.empty_distance,
-        }),
-      }
-    )
+    fetch(config.url.API_BASE + "devices/" + selectDevice.id, {
+      method: "PATCH",
+      body: JSON.stringify({
+        threshold: selectDevice.threshold,
+        // empty_distance: selectDevice.empty_distance,
+      }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
       .then((res) => {
         if (!res.ok) {
           throw Error("patch failed");
@@ -48,15 +47,14 @@ const Settings = () => {
       })
       .then((data) => {
         if (data.code === 0) {
-          // setError(null);
-          alert("succeed");
+          toast(data.message);
         } else {
           throw Error(data.msg);
         }
       })
       .catch((err) => {
-        console.log(err.message)
-      })
+        toast(err.message);
+      });
     //   TODO catch error
   };
 
@@ -68,6 +66,7 @@ const Settings = () => {
 
   return (
     <div className="settings">
+      <ToastContainer />
       <h2>Settings of the devices</h2>
       <div className="columns">
         <div className="column is-3">
@@ -83,43 +82,47 @@ const Settings = () => {
         </div>
         <div className="column is-9">
           <div className="box">
-            <div className="field">
-              <label className="label">Name</label>
-              <div className="control">
-                <p>{selectDevice?.name}</p>
+            {selectDevice && (
+              <div>
+                <div className="field">
+                  <label className="label">Name</label>
+                  <div className="control">
+                    <p>{selectDevice.name}</p>
+                  </div>
+                </div>
+                <div className="field">
+                  <label className="label">Description</label>
+                  <div className="control">
+                    <p>{selectDevice.desc}</p>
+                  </div>
+                </div>
+                <div className="field">
+                  <label className="label">Threshold</label>
+                  <div className="control">
+                    <input
+                      className="input"
+                      name="thresholdVal"
+                      value={selectDevice.threshold}
+                      onChange={handleInputChange}
+                    />
+                  </div>
+                </div>
+                <div className="field">
+                  <label className="label">Empty Distance</label>
+                  <div className="control">
+                    <input
+                      className="input"
+                      name="emptyDistanceVal"
+                      value={selectDevice.empty_distance}
+                      onChange={handleInputChange}
+                    />
+                  </div>
+                </div>
+                <button className="button is-primary" onClick={handleUpdate}>
+                  Update
+                </button>
               </div>
-            </div>
-            <div className="field">
-              <label className="label">Description</label>
-              <div className="control">
-                <p>{selectDevice?.desc}</p>
-              </div>
-            </div>
-            <div className="field">
-              <label className="label">Threshold</label>
-              <div className="control">
-                <input
-                  className="input"
-                  name="thresholdVal"
-                  value={selectDevice?.threshold}
-                  onChange={handleInputChange}
-                />
-              </div>
-            </div>
-            <div className="field">
-              <label className="label">Empty Distance</label>
-              <div className="control">
-                <input
-                  className="input"
-                  name="emptyDistanceVal"
-                  value={selectDevice?.empty_distance}
-                  onChange={handleInputChange}
-                />
-              </div>
-            </div>
-            <button className="button is-primary" onClick={handleUpdate}>
-              Updata
-            </button>
+            )}
           </div>
         </div>
       </div>

@@ -1,5 +1,6 @@
 import DeviceList from "./DeviceList";
 import useFetch from "./useFetch";
+import { config } from "./Constants";
 
 const Device = () => {
   const {
@@ -7,7 +8,7 @@ const Device = () => {
     isLoading,
     error,
   } = useFetch(
-    "http://3.27.67.131:5009/devices"
+    config.url.API_BASE + "devices"
   );
 
   return (
