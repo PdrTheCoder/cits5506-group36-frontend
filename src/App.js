@@ -1,11 +1,13 @@
 import Navbar from "./Navbar";
 import Device from "./Device";
 import Settings from "./Settings";
+import { ToastContainer } from "react-toastify";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
   return (
     <Router>
+      <ToastContainer />
       <div className="App container is-max-desktop">
         <Navbar />
         <div className="content">
