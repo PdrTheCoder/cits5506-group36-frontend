@@ -7,7 +7,7 @@ const Device = () => {
     isLoading,
     error,
   } = useFetch(
-    "https://virtserver.swaggerhub.com/ArsenePadthai/iot/1.0.0/devices"
+    "http://3.27.67.131:5009/devices"
   );
 
   return (

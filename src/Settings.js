@@ -10,7 +10,7 @@ const Settings = () => {
     isLoading,
     error,
   } = useFetch(
-    "https://virtserver.swaggerhub.com/ArsenePadthai/iot/1.0.0/devices"
+    "http://3.27.67.131:5009/devices"
   );
 
   const handleChange = (e) => {
@@ -30,7 +30,7 @@ const Settings = () => {
 
   const handleUpdate = (e) => {
     fetch(
-      "https://virtserver.swaggerhub.com/ArsenePadthai/iot/1.0.0/devices/" +
+      "http://3.27.67.131:5009/devices/" +
         selectDevice.id,
       {
         method: "PATCH",
