@@ -23,3 +23,7 @@ npm-debug.log*
 .vscode-upload.json
 yarn-debug.log*
 yarn-error.log*
+
+# Mac OSX Finder files
+.DS_Store
+
