@@ -7,12 +7,19 @@
   color: #333;
 }
 
+/* background from https://garden.spoonflower.com/c/9845626/p/f/m/Qn7rDAjhJQaLpS0xNJYlGJ88KWcBFdIAqEBG1ow_oEjOAuTC_cplh290/Trendy%20Toilet%20Paper%20Tissue%20Rolls%20on%20Dark%20Blue.jpg */
+.tpbackground {
+  background-image: url('../public/tp-background.jpg');
+}
+
+.round-corners{
+  border-radius: .5rem;
+}
 .navbar {
   padding: 20px;
   display: flex;
   align-items: center;
   margin: 0 auto;
-  border-bottom: 1px solid #f2f2f2;
 }
 .navbar h1 {
   color: #f1356d;
@@ -27,12 +34,14 @@
 }
 .navbar a:hover {
   color: #f1356d;
+  border-radius: .5rem;
 }
 .content {
   margin: 40px auto;
   padding: 20px;
 }
 
-.box {
-  margin-bottom: 1.5em;
+/* pattern from https://t4.ftcdn.net/jpg/00/26/68/55/360_F_26685522_wjOLFMUKj165aI09J1MIVloglxS5AQZw.jpg */
+.tppattern {
+  background-image: url('../public/tp-pattern.jpg');
 }
