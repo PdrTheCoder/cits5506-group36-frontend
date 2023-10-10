@@ -41,7 +41,7 @@ const DeviceList = ({ devices, title, handleDelete }) => {
                 <p>
                   {"Last Update: " +
                     (device.updated_at
-                      ? new Date(device.updated_at).toLocaleString()
+                      ? new Date(device.updated_at + 'Z').toLocaleString()
                       : " ...No readings yet.")}
                 </p>
                 <progress
@@ -53,6 +53,11 @@ const DeviceList = ({ devices, title, handleDelete }) => {
             </div>
           );
         })}
+        <div className="column is-6">
+          <div className="box" style={{height: 207.49}}>
+           TODO  - register a new device
+          </div>
+        </div>
       </div>
     </div>
   );

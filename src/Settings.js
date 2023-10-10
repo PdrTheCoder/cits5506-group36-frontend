@@ -119,7 +119,7 @@ const Settings = () => {
                     <div className="field">
                       <label className="label">Created at:</label>
                       <div className="control">
-                        <p>{new Date(selectDevice.created_at).toLocaleString()}</p>
+                        <p>{new Date(selectDevice.created_at + "Z").toLocaleString()}</p>
                       </div>
                     </div>
                     <div className="field">
@@ -147,7 +147,7 @@ const Settings = () => {
                     <div className="field">
                       <label className="label">Last updated at: </label>
                       <div className="control">
-                        <p>{(selectDevice.updated_at ? new Date(selectDevice.updated_at).toLocaleString() : " ...No readings yet.")}</p>
+                        <p>{(selectDevice.updated_at ? new Date(selectDevice.updated_at + "Z").toLocaleString() : " ...No readings yet.")}</p>
                       </div>
                     </div>
                     <button
