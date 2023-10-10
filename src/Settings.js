@@ -16,6 +16,7 @@ const Settings = () => {
       setIsRightLoading(false);
     }
   }, [devices]);
+  
 
   const handleChange = (e) => {
     const newDevice = devices.filter(
@@ -26,9 +27,13 @@ const Settings = () => {
 
   const handleInputChange = (e) => {
     const cpDevice = { ...selectDevice };
-    cpDevice[
-      e.target.name === "thresholdVal" ? "threshold" : "empty_distance"
-    ] = e.target.value;
+    if (e.target.name === "name" || e.target.name === "desc") {
+      cpDevice[e.target.name] = e.target.value;
+    } else {
+      cpDevice[
+        e.target.name === "thresholdVal" ? "threshold" : "empty_distance"
+      ] = e.target.value;
+    }
     setDevice(cpDevice);
   };
 
@@ -38,6 +43,8 @@ const Settings = () => {
       body: JSON.stringify({
         threshold: selectDevice.threshold,
         empty_distance: selectDevice.empty_distance,
+        name: selectDevice.name,
+        desc: selectDevice.desc,
       }),
       headers: {
         "Content-Type": "application/json",
@@ -84,19 +91,36 @@ const Settings = () => {
                 {selectDevice && (
                   <div>
                     <div className="field">
-                      <label className="label">Name</label>
+                      <label className="label">Device Name:</label>
+                      <p>(names must be unique!)</p>
                       <div className="control">
-                        <p>{selectDevice.name}</p>
+                        <input
+                          className="input"
+                          name="name"
+                          value={selectDevice.name}
+                          onChange={handleInputChange}
+                        />
                       </div>
                     </div>
                     <div className="field">
-                      <label className="label">Description</label>
+                      <label className="label">Description:</label>
                       <div className="control">
-                        <p>{selectDevice.desc}</p>
+                        <input
+                          className="input"
+                          name="desc"
+                          value={selectDevice.desc}
+                          onChange={handleInputChange}
+                        />
                       </div>
                     </div>
                     <div className="field">
-                      <label className="label">Threshold</label>
+                      <label className="label">Created at:</label>
+                      <div className="control">
+                        <p>{selectDevice.created_at}</p>
+                      </div>
+                    </div>
+                    <div className="field">
+                      <label className="label">Threshold:</label>
                       <div className="control">
                         <input
                           className="input"
@@ -107,7 +131,7 @@ const Settings = () => {
                       </div>
                     </div>
                     <div className="field">
-                      <label className="label">Empty Distance</label>
+                      <label className="label">Empty Distance:</label>
                       <div className="control">
                         <input
                           className="input"
@@ -115,6 +139,12 @@ const Settings = () => {
                           value={selectDevice.empty_distance}
                           onChange={handleInputChange}
                         />
+                      </div>
+                    </div>
+                    <div className="field">
+                      <label className="label">Last updated at: </label>
+                      <div className="control">
+                        <p>{(selectDevice.updated_at ? selectDevice.updated_at : " ...No readings yet.")}</p>
                       </div>
                     </div>
                     <button
