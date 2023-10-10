@@ -13,10 +13,16 @@ const Navbar = () => {
             </div>
             <div id="navbarBasicExample" className="navbar-menu">
                 <div className="navbar-start">
-                    <Link to="/" className="navbar-item is-size-3 has-text-info has-text-weight-semibold">
+                    <Link to="/" className="navbar-item is-size-4 has-text-info has-text-weight-semibold">
                         Devices
                     </Link>
-                    <Link to="/settings" className="navbar-item is-size-3 has-text-info has-text-weight-semibold">
+                    <Link to="/register" className="navbar-item is-size-4 has-text-info has-text-weight-semibold">
+                        Register
+                    </Link>
+                    <Link to="/record" className="navbar-item is-size-4 has-text-info has-text-weight-semibold">
+                        Record
+                    </Link>
+                    <Link to="/settings" className="navbar-item is-size-4 has-text-info has-text-weight-semibold">
                         Settings
                     </Link>
                 </div>
