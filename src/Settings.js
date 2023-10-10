@@ -76,7 +76,7 @@ const Settings = () => {
       {isRightLoading && <div>Loading...</div>}
       {!isRightLoading && (
         <div className="">
-          <h2>Settings of the devices</h2>
+          <h2>Device Settings</h2>
           <div className="columns">
             <div className="column is-3">
               <div className="select">
@@ -119,7 +119,7 @@ const Settings = () => {
                     <div className="field">
                       <label className="label">Created at:</label>
                       <div className="control">
-                        <p>{selectDevice.created_at}</p>
+                        <p>{new Date(selectDevice.created_at).toLocaleString()}</p>
                       </div>
                     </div>
                     <div className="field">
@@ -147,7 +147,7 @@ const Settings = () => {
                     <div className="field">
                       <label className="label">Last updated at: </label>
                       <div className="control">
-                        <p>{(selectDevice.updated_at ? selectDevice.updated_at : " ...No readings yet.")}</p>
+                        <p>{(selectDevice.updated_at ? new Date(selectDevice.updated_at).toLocaleString() : " ...No readings yet.")}</p>
                       </div>
                     </div>
                     <button
