@@ -7,8 +7,10 @@ import "react-toastify/dist/ReactToastify.css";
 const Settings = () => {
   const [selectDevice, setDevice] = useState(null);
   const [isRightLoading, setIsRightLoading] = useState(true);
+  const [refresh, setRefresh] = useState(false);
 
-  const { data: devices, _, error } = useFetch(config.url.API_BASE + "devices");
+
+  const { data: devices, _, error } = useFetch(config.url.API_BASE + "devices", refresh);
 
   useEffect(() => {
     if (devices) {
@@ -59,6 +61,7 @@ const Settings = () => {
       .then((data) => {
         if (data.code === 0) {
           toast(data.message);
+          setRefresh(!refresh);
         } else {
           throw Error(data.msg);
         }
