@@ -1,8 +1,9 @@
 import { useEffect } from "react";
-import Navbar from "./Navbar";
 import Device from "./Device";
-import Settings from "./Settings";
+import Navbar from "./Navbar";
+import Record from "./Record";
 import Register from "./Register";
+import Settings from "./Settings";
 import { ToastContainer } from "react-toastify";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
@@ -28,6 +29,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Device />}></Route>
             <Route path="/register" element={<Register />}></Route>
+            <Route path="/record" element={<Record />}></Route>
             <Route path="/settings" element={<Settings />}></Route>
           </Routes>
         </div>
