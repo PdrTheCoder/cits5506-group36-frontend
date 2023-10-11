@@ -13,7 +13,7 @@ const Register = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const deviceCreate = {name:dname, desc:ddesc, threshold: Number(threshold), empty_distance: Number(emptyVal)};
+    const deviceCreate = {name:dname, desc:ddesc, threshold: Number(threshold), distance: Number(emptyVal), empty_distance: Number(emptyVal)};
     setIsPending(true);
     fetch(config.url.API_BASE + 'devices', {
         method: "POST",
@@ -84,8 +84,8 @@ const Register = () => {
               />
             </div>
           </div>
-          { !isPending && <button className="button is-primary">Submit</button>}
-          { isPending && <button className="button is-primary" disabled>Adding the device..</button>}
+          { !isPending && <button className="button is-info">Submit</button>}
+          { isPending && <button className="button is-info" disabled>Adding the device..</button>}
         </form>
       </div>
     </div>
