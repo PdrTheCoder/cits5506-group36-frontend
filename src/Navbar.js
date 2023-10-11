@@ -38,13 +38,13 @@ const Navbar = () => {
           </Link>
           <Link
             to="/register"
-            className="navbar-item is-size-4 has-text-info has-text-weight-semibold"
+            className="navbar-item is-size-3 has-text-info has-text-weight-semibold"
           >
             Register
           </Link>
           <Link
             to="/record"
-            className="navbar-item is-size-4 has-text-info has-text-weight-semibold"
+            className="navbar-item is-size-3 has-text-info has-text-weight-semibold"
           >
             Record
           </Link>
