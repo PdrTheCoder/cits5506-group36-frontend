@@ -57,11 +57,6 @@ const DeviceList = ({ devices, title, handleDelete }) => {
             </div>
           );
         })}
-        <div className="column is-6">
-          <div className="box" style={{height: 207.49}}>
-           TODO  - register a new device
-          </div>
-        </div>
       </div>
     </div>
   );

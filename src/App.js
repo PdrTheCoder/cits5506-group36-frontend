@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import Navbar from "./Navbar";
 import Device from "./Device";
 import Settings from "./Settings";
+import Register from "./Register";
 import { ToastContainer } from "react-toastify";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
@@ -26,6 +27,7 @@ function App() {
         <div className="content px-0">
           <Routes>
             <Route path="/" element={<Device />}></Route>
+            <Route path="/register" element={<Register />}></Route>
             <Route path="/settings" element={<Settings />}></Route>
           </Routes>
         </div>

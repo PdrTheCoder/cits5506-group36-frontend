@@ -63,7 +63,7 @@ const Settings = () => {
           toast(data.message);
           setRefresh(!refresh);
         } else {
-          throw Error(data.msg);
+          throw Error(data.message);
         }
       })
       .catch((err) => {
