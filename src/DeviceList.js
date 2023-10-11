@@ -1,5 +1,5 @@
 const DeviceList = ({ devices, title, handleDelete }) => {
-  const getLabelAndProgressBarClasses = (device) => {
+  const getCategoryClasses = (device) => {
     let categoryClass = "";
     let categoryText = "";
     let categoryBackground = "";
@@ -26,7 +26,7 @@ const DeviceList = ({ devices, title, handleDelete }) => {
       <div className="columns is-multiline">
         {devices.map((device) => {
           const { categoryClass, categoryText, categoryBackground} =
-            getLabelAndProgressBarClasses(device);
+            getCategoryClasses(device);
 
           return (
             <div className="column is-6" key={device.id}>

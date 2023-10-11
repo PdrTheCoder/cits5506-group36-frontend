@@ -11,37 +11,21 @@
 .tpbackground {
   background-image: url('../public/tp-background.jpg');
 }
-
-.round-corners{
-  border-radius: .5rem;
-}
-.navbar {
-  padding: 20px;
-  display: flex;
-  align-items: center;
-  margin: 0 auto;
-}
-.navbar h1 {
-  color: #f1356d;
-}
-.navbar .links {
-  margin-left: auto;
-}
-.navbar a {
-  margin-left: 16px;
-  text-decoration: none;
-  padding: 6px;
-}
-.navbar a:hover {
-  color: #f1356d;
-  border-radius: .5rem;
-}
-.content {
-  margin: 40px auto;
-  padding: 20px;
-}
-
 /* pattern from https://t4.ftcdn.net/jpg/00/26/68/55/360_F_26685522_wjOLFMUKj165aI09J1MIVloglxS5AQZw.jpg */
 .tppattern {
   background-image: url('../public/tp-pattern.jpg');
+}
+.round-corners{
+  border-radius: .5rem;
+}
+.content {
+  margin: 2.5rem auto;
+  padding: 1.25rem;
+}
+.navbar-start .navbar-item:hover {
+  background-color: transparent;
+}
+.navbar .navbar-menu{
+  background-color: transparent;
+  border: none;
 }

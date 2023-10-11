@@ -75,7 +75,7 @@ const Settings = () => {
     <div className="settings">
       {isRightLoading && <div>Loading...</div>}
       {!isRightLoading && (
-        <div className="">
+        <div className="box tppattern">
           <h2>Device Settings</h2>
           <div className="columns">
             <div className="column is-3">
@@ -151,7 +151,7 @@ const Settings = () => {
                       </div>
                     </div>
                     <button
-                      className="button is-primary"
+                      className="button is-info"
                       onClick={handleUpdate}
                     >
                       Update
