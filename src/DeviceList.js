@@ -25,7 +25,7 @@ const DeviceList = ({ devices, title, handleDelete }) => {
     <div className="device-list">
       <div className="columns is-multiline">
         {devices.map((device) => {
-          const { categoryClass, categoryText, categoryBackground} =
+          const { categoryClass, categoryText, categoryBackground } =
             getCategoryClasses(device);
 
           return (
@@ -33,10 +33,14 @@ const DeviceList = ({ devices, title, handleDelete }) => {
               <div className={`box ${categoryBackground}`}>
                 <div className="columns">
                   <div className="column">
-                    <h2 className={`label has-text-${categoryClass}`}>{device.name}</h2>
+                    <h2 className={`label has-text-${categoryClass}`}>
+                      {device.name}
+                    </h2>
                   </div>
-                  <div className="is-vcentered column">
-                    <span className={`tag is-rounded is-${categoryClass}`}>
+                  <div className="is-flex justify-content-end pt-2">
+                    <span
+                      className={`tag is-rounded is-size-5 is-${categoryClass}`}
+                    >
                       {categoryText}
                     </span>
                   </div>
@@ -45,7 +49,7 @@ const DeviceList = ({ devices, title, handleDelete }) => {
                 <p>
                   {"Last Update: " +
                     (device.updated_at
-                      ? new Date(device.updated_at + 'Z').toLocaleString()
+                      ? new Date(device.updated_at + "Z").toLocaleString()
                       : " ...No readings yet.")}
                 </p>
                 <progress
