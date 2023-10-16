@@ -1,7 +1,5 @@
 import DeviceList from "./DeviceList";
-import useFetch from "./useFetch";
-import { useEffect } from "react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { config } from "./Constants";
 
 const Device = () => {
@@ -39,12 +37,9 @@ const Device = () => {
 
   useEffect(() => {
     getDeviceList();
-
-    const interval = setInterval(() => {
-      getDeviceList()
-    }, 10000)
-
   }, [])
+
+  //setInterval(getDeviceList, 10000)
 
   return (
     <div className="home container">
