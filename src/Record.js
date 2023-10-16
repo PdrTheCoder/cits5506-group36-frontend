@@ -46,10 +46,11 @@ const Record = () => {
               setIsPending(false);
               const g = new Dygraph("graph", dataForDraw, {
                 legend: "always",
-                title: "Distance Over Time",
-                ylabel: "Distance (CM)",
+                title: "Remaining Distance Over Time",
+                ylabel: "Remaining Distance  (CM)",
                 xlabel: "Date Time",
                 labelsSeparateLines: true,
+                labels: ['Datetime', 'R-Distance']
               });
             } else {
               throw Error(data.message);
