@@ -37,9 +37,12 @@ const Device = () => {
 
   useEffect(() => {
     getDeviceList();
+    const intervalid = setInterval(getDeviceList, 10000)
+    return function cleanup() {
+      clearInterval(intervalid);
+    }
   }, [])
 
-  //setInterval(getDeviceList, 10000)
 
   return (
     <div className="home container">
