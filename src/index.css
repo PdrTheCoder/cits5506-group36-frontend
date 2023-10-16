@@ -15,6 +15,7 @@
 .tppattern {
   background-image: url('../public/tp-pattern.jpg');
 }
+
 .round-corners{
   border-radius: .5rem;
 }

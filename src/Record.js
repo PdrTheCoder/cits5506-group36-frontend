@@ -6,38 +6,55 @@ import Dygraph from "dygraphs";
 
 const Record = () => {
   const [isPending, setIsPending] = useState(false);
+  let empty_distance = null;
 
-  const prepareData = (data) => {
+  const prepareData = (data, empty_distance) => {
     let postPrepare = Array.from(data, (i) => [
-      new Date(i.created_at),
-      i.distance,
+      new Date(i.created_at + "Z"),
+      empty_distance - i.distance,
     ]);
     return postPrepare.reverse();
   };
 
   const handleSelectChange = (deviceId) => {
     setIsPending(true);
-    fetch(config.url.API_BASE + `devices/${deviceId}/records`)
+    fetch(config.url.API_BASE + `devices/${deviceId}`)
       .then((res) => {
         if (!res.ok) {
-          throw Error(`fetch records of device - ${deviceId}`);
+          throw Error(`fetch details of device - ${deviceId} failed.`);
         }
         return res.json();
       })
       .then((data) => {
         if (data.code === 0) {
-          const dataForDraw = prepareData(data.data);
-          setIsPending(false);
-          const g = new Dygraph("graph", dataForDraw, {
-            legend: 'always',
-            title: 'Distance Over Time',
-            ylabel: 'Distance (CM)',
-            xlabel: 'Date Time',
-            labelsSeparateLines: true,
-          });
+          empty_distance = data.data.empty_distance;
         } else {
           throw Error(data.message);
         }
+      })
+      .then(() => {
+        fetch(config.url.API_BASE + `devices/${deviceId}/records`)
+          .then((res) => {
+            if (!res.ok) {
+              throw Error(`fetch records of device - ${deviceId}`);
+            }
+            return res.json();
+          })
+          .then((data) => {
+            if (data.code === 0) {
+              const dataForDraw = prepareData(data.data, empty_distance);
+              setIsPending(false);
+              const g = new Dygraph("graph", dataForDraw, {
+                legend: "always",
+                title: "Distance Over Time",
+                ylabel: "Distance (CM)",
+                xlabel: "Date Time",
+                labelsSeparateLines: true,
+              });
+            } else {
+              throw Error(data.message);
+            }
+          });
       })
       .catch((err) => {
         toast(err.message);
