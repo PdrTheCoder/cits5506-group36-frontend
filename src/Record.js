@@ -64,7 +64,8 @@ const Record = () => {
 
   return (
     <div className="record">
-      <h2>Time series record</h2>
+      <div className="box tppattern">
+      <h2>TP Usage Statistics</h2>
       <div className="columns">
         <div className="column is-3">
           <DeviceSelect handleChange={handleSelectChange} />
@@ -74,6 +75,7 @@ const Record = () => {
             <div id="graph" style={{ width: "auto" }}></div>
           </div>
         </div>
+      </div>
       </div>
     </div>
   );

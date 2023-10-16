@@ -40,8 +40,9 @@ const Register = () => {
 
   return (
     <div className="register">
-      <h2>Register a new device</h2>
-      <div className="box column is-three-fifths is-offset-one-fifth">
+      <div className="box tppattern">
+      <h2>Register a New Device</h2>
+      <div className="column is-three-fifths is-offset-one-fifth">
         <form onSubmit={handleSubmit}>
           <div className="field">
             <label className="label">Device Name:</label>
@@ -87,6 +88,7 @@ const Register = () => {
           { !isPending && <button className="button is-info">Submit</button>}
           { isPending && <button className="button is-info" disabled>Adding the device..</button>}
         </form>
+      </div>
       </div>
     </div>
   );

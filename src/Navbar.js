@@ -37,22 +37,22 @@ const Navbar = () => {
             Devices
           </Link>
           <Link
-            to="/register"
-            className="navbar-item is-size-3 has-text-info has-text-weight-semibold"
-          >
-            Register
-          </Link>
-          <Link
             to="/record"
             className="navbar-item is-size-3 has-text-info has-text-weight-semibold"
           >
-            Record
+            Stats
           </Link>
           <Link
             to="/settings"
             className="navbar-item is-size-3 has-text-info has-text-weight-semibold"
           >
             Settings
+          </Link>
+          <Link
+            to="/register"
+            className="navbar-item is-size-3 has-text-info has-text-weight-semibold"
+          >
+            Register
           </Link>
         </div>
       </div>
