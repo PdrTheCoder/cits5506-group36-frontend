@@ -55,7 +55,7 @@ const DeviceList = ({ devices, title, handleDelete }) => {
                 <progress
                   className={`progress is-${categoryClass}`}
                   value={device.empty_distance - device.distance}
-                  max={device.empty_distance - 5} // -5 accounts for the distance from the sensor to the max roll size
+                  max={device.empty_distance - 6} // -6 accounts for the distance from the sensor to the max roll size
                 ></progress>
               </div>
             </div>
